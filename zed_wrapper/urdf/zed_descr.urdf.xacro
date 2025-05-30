@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 // Copyright 2022 Stereolabs
 //
@@ -14,27 +13,20 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
--->
-
-<robot name="stereolabs_camera" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:arg name="camera_name"   default="zed" />
-  <xacro:arg name="camera_model"  default="zed" />
-  <xacro:arg name="base_frame"    default="base_link" />
-  <xacro:arg name="cam_pos_x"     default="0.0" />
-  <xacro:arg name="cam_pos_y"     default="0.0" />
-  <xacro:arg name="cam_pos_z"     default="0.0" />
-  <xacro:arg name="cam_roll"      default="0.0" />
-  <xacro:arg name="cam_pitch"     default="0.0" />
-  <xacro:arg name="cam_yaw"       default="0.0" />
-  <xacro:arg name="gnss_frame"    default="" />
-
-  <xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
-  <xacro:zed_camera name="$(arg camera_name)" model="$(arg camera_model)" parent="$(arg base_frame)">
-    <origin 
-      xyz="$(arg cam_pos_x) $(arg cam_pos_y) $(arg cam_pos_z)" 
-      rpy="$(arg cam_roll) $(arg cam_pitch) $(arg cam_yaw)"
-    />
+--><robot name="stereolabs_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg default="zed" name="camera_name"></xacro:arg>
+  <xacro:arg default="zed" name="camera_model"></xacro:arg>
+  <xacro:arg default="base_link" name="base_frame"></xacro:arg>
+  <xacro:arg default="0.0" name="cam_pos_x"></xacro:arg>
+  <xacro:arg default="0.0" name="cam_pos_y"></xacro:arg>
+  <xacro:arg default="0.0" name="cam_pos_z"></xacro:arg>
+  <xacro:arg default="0.0" name="cam_roll"></xacro:arg>
+  <xacro:arg default="0.0" name="cam_pitch"></xacro:arg>
+  <xacro:arg default="0.0" name="cam_yaw"></xacro:arg>
+  <xacro:arg default="" name="gnss_frame"></xacro:arg>
+  <xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro"></xacro:include>
+  <xacro:zed_camera model="$(arg camera_model)" name="$(arg camera_name)" parent="$(arg base_frame)">
+    <origin rpy="$(arg cam_roll) $(arg cam_pitch) $(arg cam_yaw)" xyz="$(arg cam_pos_x) $(arg cam_pos_y) $(arg cam_pos_z)"></origin>
   </xacro:zed_camera>
-
-  <link name="$(arg base_frame)" />
+  <link name="$(arg base_frame)"></link>
 </robot>
